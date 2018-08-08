@@ -23,16 +23,12 @@ Display Root ImageFSDirectory
 
 
 ImageFSVolume
-	VolumeStructure [List of ImageFSDirectory for root]	// List of all directories, their subdirectories, and their files
-	ImageFSFiles [List of all physical PNG files]
-	
+	VolumeData [List all images as ImageFSFile]
+	Directories [List of ImageFSDirectory]
 	MaxFileSize
 	MaxFileCount
 	CurrentFileCount
 
-ImageFSMasterImageList
-	
-	
 ImageFSDirectory
 	Directories [List of subdirectories as ImageFSDirectory for that folder]
 	Files [List of ImageFSFile for that folder]
@@ -40,6 +36,8 @@ ImageFSDirectory
 ImageFSFile
 	string ImagePath		// Path to image file
 	bool DoesFileExist		// if the original image location exists
+	FilePassword
+	FilePasswordIv
 	FileSlots [List of ImageFSFileSlot]		// currently, EoF and IDAT, so two files can be stored in one PNG
 	
 // It may be possible to store multiple tEXt/IDAT chunks for unlimited files
@@ -50,11 +48,10 @@ struct StorageMethod
 	
 ImageFSFileSlot
 	StorageMethod		 	//storage method
-	StoredFileIdentifier
+	StoredFileIdentifier		// Each file should have a unique identifier
+	StoredFileDirectory		// Each directory should have a unique identifier
 	//StoredFiles				// in the future, it could be possible to write large files to multiple images
 	StoredFileSize
-	StoredFilePassword		// Each fileslot has its own password generated at creation
-	StoredFileIv				// AES IV, if I decide to use it
 	bool FileSlotInUse			// Is this StorageType currently in use
 	
   ```
