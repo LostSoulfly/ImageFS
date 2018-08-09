@@ -6,9 +6,9 @@ ImageFS will be a command line program (potentially a GUI program down the road)
 
 ## Credits
 https://github.com/LostSoulfly/PNGMask_Core (My fork, original author AlphaDelta)  
-https://github.com/dokan-dev/dokan-dotnet
-https://www.nuget.org/packages/Newtonsoft.Json/
-https://www.nuget.org/packages/System.Drawing.Common/
+https://github.com/dokan-dev/dokan-dotnet  
+https://www.nuget.org/packages/Newtonsoft.Json/  
+https://www.nuget.org/packages/System.Drawing.Common/  
 
 
 ### Rough draft planning
