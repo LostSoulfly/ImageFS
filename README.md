@@ -1,9 +1,17 @@
 # ImageFS
-Still planning how to implement the filesystem.
+Under heavy development. It doesn't work yet!
 
-The goal is to have a GUI which accepts a folder (or folders) of PNG images which will be used to store data.
-After it is functional, I'd like to implement Dokan for mounting the filesystem as a drive.
+ImageFS will be a command line program (potentially a GUI program down the road) that allows mounting a system drive for a virtual file system which stores its data inside PNG images and encrypts, decrypts them on-the-fly. Essentially, it will allow storing and hiding a full file system in multiple image files transparently to the user.
 
+
+## Credits
+https://github.com/LostSoulfly/PNGMask_Core (My fork, original author AlphaDelta)  
+https://github.com/dokan-dev/dokan-dotnet
+https://www.nuget.org/packages/Newtonsoft.Json/
+https://www.nuget.org/packages/System.Drawing.Common/
+
+
+### Rough draft planning
 ```
 Utilizing PNG's IDAT chunks and EoF, we can store two files per PNG reliably.
 
