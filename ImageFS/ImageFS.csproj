@@ -14,4 +14,10 @@
     <Folder Include="FileSystem\Dokan\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="PNGMask_Core">
+      <HintPath>Libraries\PNGMask_Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

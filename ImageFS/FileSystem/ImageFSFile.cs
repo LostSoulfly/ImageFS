@@ -4,7 +4,12 @@ using System.Text;
 
 namespace ImageFS.FileSystem
 {
-    class ImageFSFile
+    public class ImageFSFile
     {
+        string imageFilePath;
+        bool fileExists;
+        string filePassword;
+        byte[] filePasswordIv;
+        List<ImageFSFileSlot> fileSlots; // two slots. Make it list for easier future expansion.
     }
 }

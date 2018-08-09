@@ -4,7 +4,12 @@ using System.Text;
 
 namespace ImageFS.FileSystem
 {
-    class ImageFSHelpers
+    public static class ImageFSHelpers
     {
+        public enum StorageMethod
+        {
+            EOF,
+            IDAT
+        }
     }
 }

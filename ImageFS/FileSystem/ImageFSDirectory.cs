@@ -4,7 +4,9 @@ using System.Text;
 
 namespace ImageFS.FileSystem
 {
-    class ImageFSDirectory
+    public class ImageFSDirectory
     {
+        List<ImageFSDirectory> subDirectories;
+        List<ImageFSFile> directoryFiles;
     }
 }

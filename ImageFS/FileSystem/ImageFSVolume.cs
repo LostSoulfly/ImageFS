@@ -4,7 +4,12 @@ using System.Text;
 
 namespace ImageFS.FileSystem
 {
-    class ImageFSVolume
+    public class ImageFSVolume
     {
+        List<ImageFSFile> volumeData;   // complete list of all images and their data
+        List<ImageFSDirectory> volumeDirectories;
+        long maxFileSize;
+        long maxFileCount;
+        long currentFileCount;
     }
 }
