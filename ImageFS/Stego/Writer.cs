@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static ImageFS.FileSystem.ImageFSHelpers;
 
 namespace ImageFS.Stego
 {
@@ -10,7 +11,7 @@ namespace ImageFS.Stego
     {
         private SteganographyProvider provider;
 
-        public bool HideData(string imagePath, string hideFilePath, string password = "", int fileSlot = 0)
+        public bool HideFile(string imagePath, string hideFilePath, string password = "", int fileSlot = 0)
         {
 
             StegoProvider prov;
@@ -36,12 +37,12 @@ namespace ImageFS.Stego
 
         }
 
-        public bool HideFSS(string imagePath, string fileSystemData, string password = "", int fileSlot = 0)
+        public bool HideFileSystem(string imagePath, string fileSystemData, string password = "", StorageMethod storageMethod = StorageMethod.EOF)
         {
 
             StegoProvider prov;
 
-            if (fileSlot == 0)
+            if (storageMethod == StorageMethod.EOF)
                 prov = Providers.XOREOF;
             else
                 prov = Providers.XORIDAT;

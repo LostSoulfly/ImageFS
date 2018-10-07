@@ -1,4 +1,5 @@
-﻿using PNGMask_Core;
+﻿using ImageFS.Utilities;
+using PNGMask_Core;
 using PNGMask_Core.Providers;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace ImageFS.Stego
             this.password = password;
         }
 
-        public (DataType t, object data) ReadData(StorageMethod storageMethod)
+        public (DataType t, object data) ReadData(StorageMethod storageSlot)
         {
 
             DataType t = DataType.None;
@@ -42,10 +43,17 @@ namespace ImageFS.Stego
             
             StegoProvider pr = Providers.XOREOF;
             
-            if (storageMethod == StorageMethod.IDAT)
+            if (storageSlot == StorageMethod.IDAT)
                 pr = Providers.XORIDAT;
 
-            if (!hasEOF && IDATs == 1) { provider = null; Console.WriteLine($"There is no data in {storageMethod.ToString()}"); }
+            if (!hasEOF && storageSlot == StorageMethod.EOF)
+            {
+                provider = null; Logger.Log($"There is no data in {storageSlot.ToString()}", Logger.LOG_LEVEL.ERR);
+            }
+            else if (IDATs <= 1)
+            {
+                provider = null; Logger.Log($"There is no data in {storageSlot.ToString()}", Logger.LOG_LEVEL.ERR);
+            }
             else
             {
                 try
@@ -58,7 +66,7 @@ namespace ImageFS.Stego
                 }
                 catch (InvalidPasswordException)
                 {
-                    Console.WriteLine("The password was incorrect.");
+                    Logger.Log("The password was incorrect.", Logger.LOG_LEVEL.ERR);
                 }
             }
 
