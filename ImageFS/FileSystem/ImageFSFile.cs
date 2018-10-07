@@ -6,10 +6,10 @@ namespace ImageFS.FileSystem
 {
     public class ImageFSFile
     {
-        string imageFilePath;
-        bool fileExists;
-        string filePassword;
-        byte[] filePasswordIv;
-        List<ImageFSFileSlot> fileSlots; // two slots. Make it list for easier future expansion.
+        public string imageFilePath;
+        public bool fileExists;
+        public string filePassword;
+        public byte[] filePasswordIv;
+        public List<ImageFSFileSlot> fileSlots; // two slots. Make it list for easier future expansion.
     }
 }

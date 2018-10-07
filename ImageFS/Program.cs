@@ -4,6 +4,8 @@ using System.IO;
 using ImageFS.Stego;
 using ImageFS.FileSystem;
 using Newtonsoft.Json;
+using ImageFS.FileSystem.Dokan;
+using DokanNet;
 
 namespace ImageFS
 {
@@ -14,6 +16,8 @@ namespace ImageFS
         private static bool volumeOpen;
 
         private static ImageFSVolume volumeTable;
+
+        private static MountVolume dokanMount;
 
         private static Reader imageReader;
         private static Writer imageWriter;
@@ -131,6 +135,12 @@ namespace ImageFS
                         break;
 
                     case 5: // volume maintenance
+                        VolumeMaintenanceMenu();
+                        break;
+
+                    case 6: // Mount volume
+                        dokanMount = new MountVolume(volumeTable);
+                        dokanMount.Mount("n:\\");
                         break;
                 }
 
@@ -149,7 +159,6 @@ namespace ImageFS
                 imageWriter.HideFileSystem(volumeFile, JsonConvert.SerializeObject(volumeTable), volumePassword, ImageFSHelpers.StorageMethod.EOF);
             }
 
-            Console.ReadKey();
         }
 
         private static int MainMenu()
@@ -185,6 +194,14 @@ namespace ImageFS
         private static void AddDonorImagesMenu()
         {
 
+        }
+
+        private static void VolumeMaintenanceMenu()
+        {
+            foreach (var item in volumeTable.volumeDirectories)
+            {
+                Logger.Log($"{item.directoryName} - SubDirectories: {item.subDirectories.Count} Files: {item.directoryFiles.Count}");
+            }
         }
 
     }

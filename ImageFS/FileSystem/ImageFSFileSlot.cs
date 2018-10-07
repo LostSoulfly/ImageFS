@@ -8,11 +8,11 @@ namespace ImageFS.FileSystem
 {
     public class ImageFSFileSlot
     {
-        StorageMethod storageMethod;
-        ulong storedFileId;
-        ulong storedFileDirectoryId;
-        long storedFileSize;
-        bool fileSlotInUse;
+        public StorageMethod storageMethod;
+        public ulong storedFileId;
+        public ulong storedFileDirectoryId;
+        public long storedFileSize;
+        public bool fileSlotInUse;
 
     }
 }
